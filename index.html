@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hand Tracking A-Frame</title>
+    <script src="./dist/index.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="#01010ea" physics>
+      <a-plane
+        position="0 0 -4"
+        rotation="-90 0 0"
+        width="4"
+        height="4"
+        color="#7BC8A4"
+        shadow
+        static-body
+      ></a-plane>
+      <a-entity
+        id="hand"
+        position="1.5 2.8 -3"
+        rotation="0 0 180"
+        scale="0.005 0.005 0.005"
+      ></a-entity>
+    </a-scene>
+    <div id="subscreen" class="subscreen">
+      <canvas id="output2d" class="output2d"></canvas>
+      <video
+        id="video"
+        class="video"
+        playsinline
+        muted
+        autoplay
+        style="visibility: hidden;"
+      ></video>
+    </div>
+    <style>
+      /* サブ画面用CSS */
+      .subscreen {
+        position: absolute;
+        top: calc(100% - 125px - 20px);
+        left: 20px;
+        width: 160px;
+        height: 125px;
+        border: solid;
+        transition: all 300ms 0s ease;
+        background-color: white;
+      }
+
+      /* video画面用CSS */
+      .video {
+        position: relative;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        width: 100%;
+        height: 100%;
+      }
+
+      /* output2d画面用CSS */
+      .output2d {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* サブ画面の拡大用CSS */
+      .large {
+        top: calc(50% - 250px);
+        left: calc(50% - 320px);
+        width: 640px;
+        height: 500px;
+      }
+
+    </style>
+  </body>
+</html>
